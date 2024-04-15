@@ -4,16 +4,16 @@ namespace Core.Infrastructure
 {
 	public abstract class EntryPoint<T> where T : RootController
 	{
-		private RootController RootController { get; set; }
+		private readonly RootController _rootController;
 
 		protected EntryPoint(T rootController)
 		{
-			RootController = rootController;
+			_rootController = rootController;
 		}
 
 		protected void Initialize()
 		{
-			RootController.StartTree();
+			_rootController.RunTree();
 		}
 	}
 }
